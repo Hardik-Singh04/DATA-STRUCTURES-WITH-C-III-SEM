@@ -1,0 +1,235 @@
+#include<stdio.h>                             //Restricted Double Ended Queue
+#include<stdlib.h>
+int size;    
+int f=-1, r=-1;
+void enqueue_front(int deque[])
+{  
+    if((f==0 && r==size-1) || (f==r+1))
+    {
+        printf("Double ended que is full\n");
+    }  
+    else if((f==-1) && (r==-1))
+    {  
+        f=r=0;
+        printf("Enter Value : ");
+        scanf("%d",&deque[f]);
+    }  
+    else if(f==0)
+    {  
+        f=size-1;  
+        printf("Enter Value : ");
+        scanf("%d",&deque[f]); 
+    }  
+    else
+    {  
+        f=f-1;  
+        printf("Enter Value : ");
+        scanf("%d",&deque[f]);
+    }  
+}
+void enqueue_rear(int deque[])
+{  
+    if((f==0 && r==size-1) || (f==r+1))
+    {
+        printf("Double ended que is full\n");  
+    }
+    else if((f==-1) && (r==-1))
+    {  
+        r=0;  
+        printf("Enter Value : ");
+        scanf("%d",&deque[r]); 
+    }  
+    else if(r==size-1)
+    {  
+        r=0;  
+        printf("Enter Value : ");
+        scanf("%d",&deque[r]); 
+    }  
+    else
+    {  
+        r++;  
+        printf("Enter Value : ");
+        scanf("%d",&deque[r]);
+    }  
+}  
+void display(int deque[])
+{  
+    int i=f;
+    if(f!=-1 || f!=r)
+    {   
+        while(i!=r)    
+        {  
+            printf("The element at index %d is %d \n",i,deque[i]);  
+            i=(i+1)%size;  
+        }  
+        printf("The element is : %d\n",deque[r]); 
+    }
+}
+void getfront(int deque[])
+{  
+    if((f==-1) && (r==-1))
+    {
+        printf("Double ended que is empty\n");   
+    }
+    else 
+    {
+        printf("The value of the front is: %d\n", deque[f]);
+    }      
+} 
+void getrear(int deque[])
+{  
+    if((f==-1) && (r==-1)) 
+    {
+        printf("Double ended que is empty\n");  
+    }
+    else 
+    {
+        printf("The value of the rear is: %d\n", deque[r]);   
+    }
+} 
+void dequeue_front(int deque[])
+{  
+    if((f==-1) && (r==-1)) 
+    {
+        printf("double ended que is empty\n");  
+    }
+    else if(f==r)
+    {  
+        printf("The deleted element is %d\n", deque[f]);  
+        f=-1;  
+        r=-1;  
+    }  
+    else if(f==(size-1))
+    {  
+        printf("The deleted element is %d\n", deque[f]);  
+        f=0;  
+    }  
+    else
+    {  
+        printf("The deleted element is %d\n", deque[f]);  
+        f=f+1;  
+    }  
+} 
+void dequeue_rear(int deque[])
+{  
+    if((f==-1) && (r==-1)) 
+    {
+        printf("Double ended que is empty\n");
+    }
+    else if(f==r)
+    {  
+        printf("The deleted element is %d\n", deque[r]);  
+        f=-1;  
+        r=-1;      
+    }  
+    else if(r==0)
+    {  
+        printf("The deleted element is %d\n", deque[r]);  
+        r=size-1;  
+    }  
+    else
+    {  
+        printf("The deleted element is %d\n", deque[r]);  
+        r=r-1;  
+    }  
+}  
+int main() 
+ {  
+    int *a,val;
+    int choice=1;
+    int way;
+    printf("Enter the size of Que :");
+    scanf("%d",&size);
+    a=(int *)malloc(size*sizeof(int));
+    printf("Enter one from the menu: \n");
+    printf("1.Input restricted double ended queue\n");
+    printf("2.Output restricted double ended queue.\n");
+    printf("Enter You Way : ");
+    scanf("%d",&way);
+    if(way==1)
+    {
+        do
+        {
+            printf("\n1.Inserting a value from the front.\n");
+            printf("2.Deleting a value from the front.\n");
+            printf("3.Deleting a value from the rear \n");
+            printf("4.Retrieve the front value.\n");
+            printf("5.Retrieve the rear value.\n");
+            printf("6.Display.\n");
+            printf("7.Exit.\n");
+            printf("Enter Your Choice : ");
+            scanf("%d",&choice);
+            switch(choice)
+            {
+                case 1:
+                    enqueue_front(a);
+                    break;
+                case 2:
+                    dequeue_front(a); 
+                    break;
+                case 3:
+                    dequeue_rear(a); 
+                    break;
+                case 4:
+                    getfront(a);
+                    break;
+                case 5:
+                    getrear(a);
+                    break;
+                case 6:
+                    display(a);
+                    break;
+                case 7:
+                    break;
+                default:
+                    printf("You entered the wrong choice\n");
+            }
+        }while(choice!=7);
+    }
+    else if(way==2)
+    {
+        do
+        {
+            printf("\n1.Inserting a value from the front.\n");
+            printf("2.Inserting a value from the rear.\n");
+            printf("3.Retrieve the front value.\n");
+            printf("4.Retrieve the rear value.\n");
+            printf("5.Deleting a value from the front.\n");
+            printf("6.Display.\n");
+            printf("7.Exit\n");
+            printf("Enter Your Choice : ");
+            scanf("%d",&choice);
+            switch(choice)
+            {
+                case 1:
+                    enqueue_front(a);
+                    break;
+                case 2:
+                    enqueue_rear(a);
+                    break;
+                case 3:
+                    getfront(a);
+                    break;
+                case 4:
+                    getrear(a); 
+                    break;
+                case 5:
+                    dequeue_front(a); 
+                    break;
+                case 6:
+                    display(a);
+                    break;
+                case 7:
+                    break;
+                default:
+                    printf("You entered the wrong choice\n");
+            }
+        }while(choice!=7);
+    }
+    else
+    {
+        printf("You entered the wrong choice\n");
+    }
+    return 0;
+}
+
