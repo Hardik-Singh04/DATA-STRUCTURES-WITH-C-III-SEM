@@ -1,0 +1,85 @@
+#include<stdio.h>                            //Infix to Prefix
+#include<string.h>
+#include <ctype.h>
+#define MAX 30         
+char s[MAX];
+int top=-1;
+char *strrev (char *str) 
+{ 
+  int i; 
+  int len = 0; 
+  char c; 
+  if (!str) 
+    return NULL; 
+  while(str[len] != '\0'){ 
+    len++; 
+  } 
+  for(i = 0; i < (len/2); i++) 
+  { 
+    c = str[i]; 
+    str [i] = str[len - i - 1]; 
+    str[len - i - 1] = c; 
+  } 
+  return str; 
+} 
+void push(char elem)
+{                      
+    s[++top]=elem;
+}
+
+char pop()
+{                     
+    return(s[top--]);
+}
+
+int pr(char elem)
+{               
+    switch(elem)
+    {
+    case '#': return 0;
+    case ')': return 1;
+    case '+':
+    case '-': return 2;
+    case '*':
+    case '/': return 3;
+    }
+    return -1;
+}
+
+
+
+int main()
+{                         
+    char infx[MAX],prfx[MAX],ch,elem;
+    int i=0,k=0;
+    printf("Read the Infix Expression : ");
+    scanf("%s",infx);
+    push('#');
+    strrev(infx);
+    while( (ch=infx[i++]) != '\0')
+    {
+        if( ch == ')') push(ch);
+        else
+            if(isalnum(ch)) prfx[k++]=ch;
+            else
+                if( ch == '(')
+                {
+                    while( s[top] != ')')
+                        prfx[k++]=pop();
+                    elem=pop(); 
+                }
+                else
+                {      
+                    while( pr(s[top]) >= pr(ch) )
+                        prfx[k++]=pop();
+                    push(ch);
+                }
+    }
+    while( s[top] != '#')     
+        prfx[k++]=pop();
+    prfx[k]='\0';          
+    strrev(prfx);
+    strrev(infx);
+    printf("\n\nGiven Infix Expn: %s  Prefix Expn: %s\n",infx,prfx);
+    
+}
