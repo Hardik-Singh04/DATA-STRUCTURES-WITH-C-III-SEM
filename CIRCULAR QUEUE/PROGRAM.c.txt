@@ -27,7 +27,7 @@ void enqeue(int *q,int *f,int *r)
 }
 void deqeue(int *q,int *f,int *r)
 {
-	if (*f==-1)
+    if (*f==-1)
     {
         printf("Queue is Empty\n");
         return ;
