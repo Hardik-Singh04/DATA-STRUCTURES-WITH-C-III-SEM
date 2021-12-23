@@ -74,7 +74,7 @@ void sortStack(struct stack** s)
         sortedInsert(s, x);
     }
 }
- 
+
 //function to print elements of stack
 void printStack(struct stack* s)
 {
