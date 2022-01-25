@@ -1,4 +1,3 @@
-
 #include<stdio.h>                          //linear queue
 #define MAX 10
 void enqeue(int *q,int *f,int *r)
