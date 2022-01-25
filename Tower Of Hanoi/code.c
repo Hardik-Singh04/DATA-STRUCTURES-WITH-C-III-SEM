@@ -16,7 +16,6 @@ void TOH(int n, char a, char b, char c)
     {
         printf("\nMove %c to %c\n",a,b);
     }
-
     else
     {   
         TOH(n-1,a , c , b);
