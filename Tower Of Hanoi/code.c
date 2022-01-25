@@ -9,7 +9,6 @@ int main()
         printf("Enter Number of Disk : ");
         scanf("%d",&n);
         TOH(n,a,b,c);
-
         return 0;      
 
 }
