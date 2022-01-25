@@ -6,7 +6,6 @@ int main()
         char a = 'A' , b = 'B', c = 'C';
 
         int n;
-
         printf("Enter Number of Disk : ");
         scanf("%d",&n);
         TOH(n,a,b,c);
