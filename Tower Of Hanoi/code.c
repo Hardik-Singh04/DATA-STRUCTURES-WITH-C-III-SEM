@@ -9,7 +9,6 @@ int main()
         scanf("%d",&n);
         TOH(n,a,b,c);
         return 0;      
-
 }
 void TOH(int n, char a, char b, char c)
 {
@@ -26,5 +25,4 @@ void TOH(int n, char a, char b, char c)
         TOH(n-1,c, b, a);
         return ;
     }
-    
 }
