@@ -1,4 +1,4 @@
-#include<stdio.h>                               //Dpuble Ended Queue
+#include<stdio.h>                               //Double Ended Queue
 #include<stdlib.h>
 void input_front(int *a,int *f,int *r,int n)
 {
